@@ -45,29 +45,27 @@ let displayTodo = () => {
     list.forEach((element, index) => {
         let result = document.createElement("li");
         result.innerHTML = `${element}
-        <div><button id="edit-${index}">Edit</button>
-        <button id="delete-${index}">Delete</button></div>`;
+            <div><button id="edit-${index}">Edit</button>
+            <button id="delete-${index}">Delete</button></div>`;
 
         listAllTodo.appendChild(result);
+
     });
 };
 
-let editTodo = (event) => {
+let editTodo = (index) => {
     let newTodo = prompt("Enter your new todo...");
-    let id = event.target.id.replace("edit-", "");
-
-    let index = list.findIndex((items) => {
-        return items.id === Number(id);
-    });
-
-    list.splice(index, 1, {
-        id: index + 1,
-        todo: newTodo,
-    });
+    list.splice(index, 1);
 
     displayTodo(list);
 };
 
+// let deleteTodo = (index) => {
+//     list.splice(index, 1);
+//     displayTodo(list);
+// };
+
 formTodo.addEventListener("submit", addToDo);
 submitButton.addEventListener("click", addToDo);
 listAllTodo.addEventListener("click", editTodo);
+// listAllTodo.addEventListener("click", deleteTodo);
