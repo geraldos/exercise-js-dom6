@@ -12,15 +12,21 @@ submitButton.addEventListener('click', function () {
         var value = document.createTextNode(list[i]);
 
         var buttons = document.createElement("BUTTON");
-        var button1 = document.createElement("button");
+        var button1 = document.createElement("BUTTON");
 
         var edits = document.createTextNode("Edit");
         var deletee = document.createTextNode("Delete");
     }
-    element.appendChild(value)
+    element.appendChild(value);
+
     buttons.appendChild(edits);
     button1.appendChild(deletee);
-    document.getElementById("show").appendChild(element).appendChild(buttons).appendChild(button1)
+
+    element.appendChild(buttons);
+    element.appendChild(button1);
+
+    document.getElementById("show").appendChild(element)
+
 })
 
 console.log(list)

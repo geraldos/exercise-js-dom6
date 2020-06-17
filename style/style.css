@@ -36,3 +36,8 @@
 .button {
     padding-left: 75px;
 }
+
+.kotak1 {
+    display: flex;
+    justify-content: space-around;
+}
