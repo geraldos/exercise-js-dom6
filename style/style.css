@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap");
 
 * {
-    font-family: 'Quicksand', sans-serif;
+    font-family: "Quicksand", sans-serif;
     font-size: xx-large;
     margin: 0;
     padding: 0;
@@ -35,9 +35,4 @@
 
 .button {
     padding-left: 75px;
-}
-
-.kotak1 {
-    display: flex;
-    justify-content: space-around;
 }
