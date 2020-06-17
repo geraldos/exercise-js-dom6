@@ -49,7 +49,7 @@ resultInput = () => {
 };
 
 editItem = (index) => {
-    newItem = prompt("add edit to new list:");
+    newItem = prompt("Edit your todo list..");
     list.splice(index, 1, newItem);
 
     resultInput();
