@@ -1,71 +1,62 @@
+let inputList = document.querySelector(".output-todo");
 let list = [];
+let buttonInput = document.getElementById("button-input");
 
-let formTodo = document.getElementById("form-todo");
-let submitButton = document.getElementById("submit");
-let listAllTodo = document.getElementById("show");
+buttonInput.addEventListener("click", () => {
+    const inputTodo = document.getElementById("input-todo").value;
+    list.push(inputTodo);
+    resultInput();
+});
 
-// submitButton.addEventListener("click", function () {
-//     let inputs = document.getElementById("add-to-do").value;
-//     list.push(inputs);
+resultInput = () => {
+    inputList.innerHTML = null;
 
-//     for (i = 0; i < list.length; i++) {
-//         var element = document.createElement("p");
-//         var value = document.createTextNode(list[i]);
+    list.forEach((item, index) => {
 
-//         var buttons = document.createElement("BUTTON");
-//         var button1 = document.createElement("BUTTON");
+        let inputValue = document.createTextNode(item);
+        let text = document.createElement("p");
+        text.appendChild(inputValue);
+        let divTodo = document.createElement("div");
+        divTodo.setAttribute("class", "todo");
+        divTodo.appendChild(text);
 
-//         var edits = document.createTextNode("Edit");
-//         var deletee = document.createTextNode("Delete");
-//     }
-//     element.appendChild(value);
 
-//     buttons.appendChild(edits);
-//     button1.appendChild(deletee);
+        let divButton = document.createElement("div");
+        divButton.setAttribute("class", "button");
+        let editButton = document.createElement("button");
+        let textEdit = document.createTextNode("Edit");
+        editButton.appendChild(textEdit);
+        let deleteButton = document.createElement("button");
+        let textDelete = document.createTextNode("Delete");
+        deleteButton.appendChild(textDelete);
+        divButton.appendChild(editButton);
+        divButton.appendChild(deleteButton);
 
-//     element.appendChild(buttons);
-//     element.appendChild(button1);
+        let divList = document.createElement("div");
+        divList.setAttribute("class", "list");
+        divList.appendChild(divTodo);
+        divList.appendChild(divButton);
+        inputList.appendChild(divList);
 
-//     document.getElementById("show").appendChild(element);
-// });
+        editButton.addEventListener("click", () => {
+            editItem(index);
+        });
 
-// console.log(list);
-
-let addToDo = (event) => {
-    event.preventDefault();
-
-    let addValue = document.getElementById("add-to-do").value;
-    list.push(addValue);
-    displayTodo(list);
-};
-
-let displayTodo = () => {
-    listAllTodo.innerHTML = "";
-
-    list.forEach((element, index) => {
-        let result = document.createElement("li");
-        result.innerHTML = `${element}
-            <div><button id="edit-${index}">Edit</button>
-            <button id="delete-${index}">Delete</button></div>`;
-
-        listAllTodo.appendChild(result);
-
+        deleteButton.addEventListener("click", () => {
+            deleteItem(index);
+        });
     });
 };
 
-let editTodo = (index) => {
-    let newTodo = prompt("Enter your new todo...");
-    list.splice(index, 1);
+editItem = (index) => {
+    newItem = prompt("add edit to new list:");
+    list.splice(index, 1, newItem);
 
-    displayTodo(list);
+    resultInput();
 };
 
-// let deleteTodo = (index) => {
-//     list.splice(index, 1);
-//     displayTodo(list);
-// };
+deleteItem = (index) => {
+    list.splice(index, 1);
 
-formTodo.addEventListener("submit", addToDo);
-submitButton.addEventListener("click", addToDo);
-listAllTodo.addEventListener("click", editTodo);
-// listAllTodo.addEventListener("click", deleteTodo);
+    resultInput();
+};
